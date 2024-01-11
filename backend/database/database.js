@@ -14,7 +14,18 @@ module.exports = {
     return new Promise((resolve, reject) => {
       connection.query(query, (err, result) => {
         if (err) {
-            reject(err);
+          reject(err);
+        }
+        resolve(result);
+      });
+    });
+  },
+  saveWord: (word1, word2) => {
+    const query = ("INSERT INTO words (word1, word2) VALUES ? ?", [word1, word2]);
+    return new Promise((resolve, reject) => {
+      connection.query(query, (err, result) => {
+        if (err) {
+          reject(err);
         }
         resolve(result);
       });
