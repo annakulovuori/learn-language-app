@@ -21,9 +21,10 @@ module.exports = {
     });
   },
   saveWord: (word1, word2) => {
-    const query = ("INSERT INTO words (word1, word2) VALUES ? ?", [word1, word2]);
+    const query = "INSERT INTO words (word1, word2) VALUES (?, ?)";
+    const values = [word1, word2];
     return new Promise((resolve, reject) => {
-      connection.query(query, (err, result) => {
+      connection.query(query, values, (err, result) => {
         if (err) {
           reject(err);
         }
