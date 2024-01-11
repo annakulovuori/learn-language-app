@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const mysql = require("mysql");
 const cors = require("cors");
+const wordRouter = require("./routes/wordRouter");
 
 const connection = mysql.createPool({
   connectionLimit: 10,
@@ -14,14 +15,10 @@ const port = 8080;
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(express.static("./frontend/dist"));
+//app.use(express.static("./frontend/dist"));
 
-app.get("/api/locations", (req, res) => {
-  connection.query("SELECT * FROM words", (err, result) => {
-    if (err) throw err;
-    res.json(result);
-  });
-});
+app.use("/api/words", wordRouter)
+
 const server = app
   .listen(port, () => {
     console.log(`SERVER: listening on port ${port}.`);
