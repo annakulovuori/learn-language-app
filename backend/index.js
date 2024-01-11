@@ -4,13 +4,6 @@ const mysql = require("mysql");
 const cors = require("cors");
 const wordRouter = require("./routes/wordRouter");
 
-const connection = mysql.createPool({
-  connectionLimit: 10,
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
-});
 const port = 8080;
 const app = express();
 app.use(express.json());
