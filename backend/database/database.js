@@ -37,10 +37,22 @@ module.exports = {
     const values = [id];
     return new Promise((resolve, reject) => {
       connection.query(query, values, (err, result) => {
-        if (err) {
+        if (result.affectedRows === 0) {
           reject(err);
         }
-        resolve(result);
+        resolve();
+      });
+    });
+  },
+  updateById: (id, updatedWords) => {
+    const query = "UPDATE words SET word1 = ?, word2 = ? WHERE id = ?";
+    const values = [updatedWords.word1, updatedWords.word2, id];
+    return new Promise((resolve, reject) => {
+      connection.query(query, values, (err, result) => {
+        if (result.affectedRows === 0) {
+          reject(err);
+        }
+        resolve();
       });
     });
   },
