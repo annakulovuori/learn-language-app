@@ -4,4 +4,14 @@ get http://localhost:8080/api/words
 post http://localhost:8080/api/words
 Content-Type: application/json
 
+
 {"word1": "koira", "word2": "dogi"}
+###
+
+delete http://localhost:8080/api/words/3
+###
+
+put http://localhost:8080/api/words/4
+Content-Type: application/json
+
+{"word1": "kissa", "word2": "catti"}
