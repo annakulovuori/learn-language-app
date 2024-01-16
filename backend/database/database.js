@@ -32,4 +32,16 @@ module.exports = {
       });
     });
   },
+  deleteById: (id) => {
+    const query = "DELETE FROM words WHERE ID = ?";
+    const values = [id];
+    return new Promise((resolve, reject) => {
+      connection.query(query, values, (err, result) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(result);
+      });
+    });
+  },
 };

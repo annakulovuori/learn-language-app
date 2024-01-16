@@ -1,0 +1,7 @@
+get http://localhost:8080/api/words
+###
+
+post http://localhost:8080/api/words
+Content-Type: application/json
+
+{"word1": "koira", "word2": "dogi"}
