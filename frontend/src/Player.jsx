@@ -24,7 +24,6 @@ export default function Player() {
     <Box
       component="form"
       sx={{
-        "& > :not(style)": { m: 1, width: "25ch" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
