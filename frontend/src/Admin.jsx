@@ -33,13 +33,25 @@ export default function Admin() {
   }, []);
 
   const handleEdit = async (id) => {
-    const wordPairToEdit = editValues[id];
-    if (!wordPairToEdit) return;
+    const currentWordPair = words.find((wordPair) => wordPair.ID === id);
+    const updatedWordPair = editValues[id];
+
+    if (!updatedWordPair) {
+      console.error("No edit values found for ID:", id);
+      return;
+    }
+
+    const payload = {
+      word1: updatedWordPair.word1 || currentWordPair.word1,
+      word2: updatedWordPair.word2 || currentWordPair.word2,
+    };
+
+    console.log("Editing word pair:", id, payload);
 
     try {
-      await axios.put(`http://localhost:8080/api/words/${id}`, wordPairToEdit);
+      await axios.put(`http://localhost:8080/api/words/${id}`, payload);
       fetchData();
-      setEditValues((prev) => ({ ...prev, [id]: undefined })); 
+      setEditValues((prev) => ({ ...prev, [id]: undefined }));
     } catch (err) {
       console.error("Error editing words:", err);
     }
