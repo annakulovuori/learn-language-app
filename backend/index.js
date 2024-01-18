@@ -8,7 +8,7 @@ const port = 8080;
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(express.static("./frontend/dist"));
+app.use(express.static("../frontend/dist"));
 
 //Käytetään wordRouteria kaikissa pyynnöissä mitkä tulee kyseiseen osoitteeseen
 app.use("/api/words", wordRouter);
