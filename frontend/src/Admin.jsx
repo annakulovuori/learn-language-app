@@ -64,7 +64,7 @@ export default function Admin() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/words/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/words/${id}`);
       fetchData();
     } catch (err) {
       console.error("Error deleting data:", err);
