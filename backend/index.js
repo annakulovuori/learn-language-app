@@ -10,8 +10,10 @@ app.use(express.json());
 app.use(cors());
 //app.use(express.static("./frontend/dist"));
 
+//Käytetään wordRouteria kaikissa pyynnöissä mitkä tulee kyseiseen osoitteeseen
 app.use("/api/words", wordRouter)
 
+//käytetään serverinä expressiä ja käynnistetään se.
 const server = app
   .listen(port, () => {
     console.log(`SERVER: listening on port ${port}.`);

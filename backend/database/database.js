@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 
+//Tehdään database yhteys poolilla
 const connection = mysql.createPool({
   connectionLimit: 10,
   host: process.env.HOST,
@@ -8,6 +9,7 @@ const connection = mysql.createPool({
   database: process.env.DATABASE,
 });
 
+//database metodi, jolla etsitään kaikki tiedot
 module.exports = {
   findAll: () => {
     const query = "SELECT * FROM words";
@@ -20,6 +22,7 @@ module.exports = {
       });
     });
   },
+  //database metodi, jolla tallennetaan sanat tietokantaan, id tulee itsestään autoincrementillä
   saveWord: (word1, word2) => {
     const query = "INSERT INTO words (word1, word2) VALUES (?, ?)";
     const values = [word1, word2];
@@ -32,6 +35,7 @@ module.exports = {
       });
     });
   },
+  //database mmetodi, jolla poistetaan tietokannasta id:n perusteella
   deleteById: (id) => {
     const query = "DELETE FROM words WHERE ID = ?";
     const values = [id];
@@ -44,6 +48,7 @@ module.exports = {
       });
     });
   },
+  //database metodi, jolla korvataan vanhat tiedot uudella syötteellä id:n perusteella
   updateById: (id, updatedWords) => {
     const query = "UPDATE words SET word1 = ?, word2 = ? WHERE id = ?";
     const values = [updatedWords.word1, updatedWords.word2, id];

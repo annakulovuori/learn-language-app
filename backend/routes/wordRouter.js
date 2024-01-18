@@ -2,6 +2,8 @@ const database = require("../database/database");
 const express = require("express");
 const wordRouter = express.Router();
 
+//Routen funktio, joka käsittelee get pyynnöt
+//käytetään findAll database metodia ja muutetaan tulos jsoniksi
 wordRouter.get("/", async (req, res) => {
   try {
     const words = await database.findAll();
@@ -11,6 +13,8 @@ wordRouter.get("/", async (req, res) => {
   }
 });
 
+//Routen funktio, joka käsittelee post pyynnöt
+//käytetään saveWord database metodia, jolle annetaan sanat ja tallennuksen onnistuessa annetaan ok status
 wordRouter.post("/", async (req, res) => {
   try {
     const word1 = req.body.word1;
@@ -22,6 +26,8 @@ wordRouter.post("/", async (req, res) => {
   }
 });
 
+//Routen funktio, joka käsittelee delete pyynnöt
+//käytetään deleteById database metodia, jolle annetaan id ja poiston onnistuessa annetaan ok status
 wordRouter.delete("/:myId([0-9]+)", async (req, res) => {
   try {
     const id = parseInt(req.params.myId);
@@ -32,6 +38,9 @@ wordRouter.delete("/:myId([0-9]+)", async (req, res) => {
   }
 });
 
+//Routen funktio, joka käsittelee put pyynnöt
+//vertaillaan haluttuja key sanoja saatuihin ja jos ne on samat, tallennetaan uudet sanat muuttujaan
+//käytetään updateById database metodia, jolle annetaan id ja uudet sanat. 
 wordRouter.put("/:myId([0-9]+)", async (req, res) => {
   try {
     const expectedKeys = ["word1", "word2"];
