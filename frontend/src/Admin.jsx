@@ -21,7 +21,9 @@ export default function Admin() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/words");
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/words`
+      );
       setWords(response.data);
     } catch (err) {
       console.error("Error fetching data:", err);
@@ -49,7 +51,10 @@ export default function Admin() {
     console.log("Editing word pair:", id, payload);
 
     try {
-      await axios.put(`http://localhost:8080/api/words/${id}`, payload);
+      await axios.put(
+        `${import.meta.env.VITE_API_URL}/api/words/${id}`,
+        payload
+      );
       fetchData();
       setEditValues((prev) => ({ ...prev, [id]: undefined }));
     } catch (err) {
@@ -67,7 +72,7 @@ export default function Admin() {
   };
   const handleAdd = async () => {
     try {
-      await axios.post(`http://localhost:8080/api/words`, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/words`, {
         word1: newWord1,
         word2: newWord2,
       });

@@ -12,7 +12,9 @@ export default function Player() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/words");
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/words`
+      );
       setWords(response.data);
       setUserAnswers(new Array(response.data.length).fill(""));
       setScore(null);
