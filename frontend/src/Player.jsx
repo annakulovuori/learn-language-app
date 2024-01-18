@@ -40,7 +40,7 @@ export default function Player() {
             display: "flex",
             alignItems: "baseline",
             justifyContent: "center",
-            gap: "2 0px",
+            gap: "20px",
           }}
         >
           <Typography variant="h6">{wordObj.word1}</Typography>
