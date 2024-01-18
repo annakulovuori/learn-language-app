@@ -8,16 +8,16 @@ const port = 8080;
 const app = express();
 app.use(express.json());
 app.use(cors());
-//app.use(express.static("./frontend/dist"));
+app.use(express.static("./frontend/dist"));
 
 //Käytetään wordRouteria kaikissa pyynnöissä mitkä tulee kyseiseen osoitteeseen
-app.use("/api/words", wordRouter)
+app.use("/api/words", wordRouter);
 
 //käytetään serverinä expressiä ja käynnistetään se.
 const server = app
   .listen(port, () => {
     console.log(`SERVER: listening on port ${port}.`);
-    console.log(process.env); 
+    console.log(process.env);
   })
   .on("error", (err) => {
     console.error("SERVER: Error starting server: ", err);
