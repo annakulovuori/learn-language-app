@@ -119,6 +119,16 @@ export default function Admin() {
         </IconButton>
       </div>
 
+      <p
+        style={{
+          margin: "25px",
+          fontFamily: "Roboto, sans-serif",
+          color: "gray",
+        }}
+      >
+        EDIT
+      </p>
+
       <Dialog open={openDialog} onClose={handleDialogClose}>
         <DialogTitle>Add New Word Pair</DialogTitle>
         <DialogContent>
