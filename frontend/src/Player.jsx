@@ -18,7 +18,7 @@ export default function Player() {
       setWords(response.data);
       setUserAnswers(new Array(response.data.length).fill(""));
       setScore(null);
-      setIsCorrect([]); // Reset isCorrect array
+      setIsCorrect([]); // Resetoidaan iscorrect
     } catch (err) {
       console.error("Error fetching data:", err);
     }
@@ -35,7 +35,7 @@ export default function Player() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault();
     const correctAnswers = words.map((wordObj) => wordObj.word2);
     const newIsCorrect = userAnswers.map((answer, index) => ({
       answer,
@@ -52,7 +52,7 @@ export default function Player() {
   };
 
   const handlePlayAgain = () => {
-    fetchData(); // Fetch new data and reset the state
+    fetchData(); // hakee uuden datan ja resetoi kaiken
   };
 
   return (
@@ -63,6 +63,8 @@ export default function Player() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        marginTop: "50px",
+        gap: "20px",
       }}
       noValidate
       autoComplete="off"
