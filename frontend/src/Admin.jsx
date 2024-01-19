@@ -105,8 +105,14 @@ export default function Admin() {
       noValidate
       autoComplete="off"
     >
-      <div style={{ display: "flex", marginBottom: "20px" }}>
-        <p>Add new word pair</p>
+      <div
+        style={{
+          display: "flex",
+          marginBottom: "20px",
+          fontFamily: "Roboto, sans-serif",
+        }}
+      >
+        <p>Add a new word pair</p>
         <IconButton onClick={handleDialogOpen}>
           <AddCircleOutlineIcon />
         </IconButton>
