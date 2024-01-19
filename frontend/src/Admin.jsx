@@ -183,9 +183,17 @@ export default function Admin() {
               }))
             }
           />
-          <IconButton onClick={() => handleEdit(wordObj.ID)}>
-            <ModeEditIcon />
-          </IconButton>
+          <Button
+            variant="outlined"
+            onClick={() => handleEdit(wordObj.ID)}
+            sx={{
+              borderColor: "#1E1E1E",
+              color: "#1E1E1E",
+              "&:hover": { backgroundColor: "#EFB4FA" },
+            }}
+          >
+            SAVE
+          </Button>
 
           <IconButton onClick={() => handleDelete(wordObj.ID)}>
             <DeleteIcon />
