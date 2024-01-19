@@ -26,7 +26,7 @@ function Navbar() {
               flexGrow: 1, // Hyväksyy että napit voi täyttää jäljelle jääneen tilan
             }}
           >
-            {["/HOME", "/PLAYER", "/ADMIN", "/INFO"].map((path, index) => (
+            {["/", "/PLAYER", "/ADMIN", "/INFO"].map((path, index) => (
               <Button
                 key={index}
                 component={Link}
@@ -41,7 +41,7 @@ function Navbar() {
                   ...(isActive(path) && { borderBottom: "3px solid #EFB4FA" }),
                 }}
               >
-                {path.substring(1)}
+                {path === "/" ? "HOME" : path.substring(1)}
               </Button>
             ))}
           </Box>
