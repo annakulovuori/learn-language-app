@@ -23,10 +23,10 @@ function Navbar() {
             sx={{
               display: "flex",
               justifyContent: "space-between", // Hajauttaa napit tasaisesti
-              flexGrow: 1, // Hycäksyy että napit voi täyttää jäljelle jääneen tilan
+              flexGrow: 1, // Hyväksyy että napit voi täyttää jäljelle jääneen tilan
             }}
           >
-            {["/home", "/admin", "/player", "/info"].map((path, index) => (
+            {["/HOME", "/PLAYER", "/ADMIN", "/INFO"].map((path, index) => (
               <Button
                 key={index}
                 component={Link}
