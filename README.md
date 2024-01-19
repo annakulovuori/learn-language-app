@@ -3,11 +3,14 @@
 An application that can be used to train foreign language. The end user is prompted with foreign language words and user must write the correct translation.
 Ability to add, edit and delete word pairs.
 
+# Motivation
+Final assignment of backend course.
+
 # URL to cloud
 https://annas-learn-language.onrender.com/
 
-# Motivation
-Final assignment of backend course.
+# Screencast
+https://youtu.be/CqdjrmOF4fo
 
 # Screenshots
 ![Homepage](images/homepage.png)
