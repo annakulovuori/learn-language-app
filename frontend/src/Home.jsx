@@ -3,21 +3,21 @@ function Home() {
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "column", //kaikki keskelle
         alignItems: "center",
         justifyContent: "center",
         margin: "25px",
         fontFamily: "Roboto, sans-serif",
-        color: "#292929",
+        color: "#292929", //tekstin väri tumma harmaa
       }}
     >
       <div
         style={{
-          backgroundColor: "#EFB4FA",
-          width: "45%",
-          justifyContent: "center",
+          backgroundColor: "#EFB4FA", // otsikon divin taustaväriksi pinkki
+          width: "45%", //divin leveys 45% koko sivusta
+          justifyContent: "center", //divi keskelle
           display: "flex",
-          borderRadius: "15px",
+          borderRadius: "15px", //pyöristetyt reunat
         }}
       >
         <p style={{ fontSize: "40px" }}>READY TO LEARN?</p>

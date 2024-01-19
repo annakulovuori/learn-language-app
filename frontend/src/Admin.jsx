@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -12,13 +11,16 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import axios from "axios";
 
+
 export default function Admin() {
+  //käytetään usestatea sanoille, popupille ja tietojen editoinnille
   const [words, setWords] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [newWord1, setNewWord1] = useState("");
   const [newWord2, setNewWord2] = useState("");
   const [editValues, setEditValues] = useState({});
 
+  //haetaan data palvelimelta
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -30,53 +32,73 @@ export default function Admin() {
     }
   };
 
+  ////kutsutaan fetchdataa kun sivu latautuu
   useEffect(() => {
     fetchData();
   }, []);
 
+  //käsitellään editointi sanaparin id:n perusteella
+  //uuteen muuttujaan tallennetaan tietokannasta löytyvä sanapari find metodilla
+  //updated muuttujaan haetaan editvalues objektista päivitetty sanapari käyttämällä annetua id
   const handleEdit = async (id) => {
     const currentWordPair = words.find((wordPair) => wordPair.ID === id);
     const updatedWordPair = editValues[id];
 
+    //tarkistetaan onko updatedWordPair olemassa jos ei lopetetaan
     if (!updatedWordPair) {
-      console.error("No edit values found for ID:", id);
+      console.error("No values found for ID");
       return;
     }
-
+    
+    //payload objekti joka sisältää muokatut tiedot
+    //jos updatedWordPair sisältää uusia tietoja käytetään niitä, jos ei käytetään vanhoja
     const payload = {
       word1: updatedWordPair.word1 || currentWordPair.word1,
       word2: updatedWordPair.word2 || currentWordPair.word2,
     };
 
-    console.log("Editing word pair:", id, payload);
-
+    //axios.put metodilla lähetetään payload palvelimelle samalle id paikalle
     try {
       await axios.put(
         `${import.meta.env.VITE_API_URL}/api/words/${id}`,
         payload
       );
+      //kutsutaan fetchDataa, jotta uusi data päivittyy sivulle
       fetchData();
+
+      //päivitetään editvalues poistamalla siitä muokatun sanaparin tiedot
       setEditValues((prev) => ({ ...prev, [id]: undefined }));
     } catch (err) {
       console.error("Error editing words:", err);
     }
   };
 
+  //käsitellään poistaminen sanaparin id:n perusteella
   const handleDelete = async (id) => {
     try {
+        //axios.delete metodilla poistaminen
       await axios.delete(`${import.meta.env.VITE_API_URL}/api/words/${id}`);
+
+      //kutsutaan fetchDataa, jotta sivu päivittyy
       fetchData();
     } catch (err) {
       console.error("Error deleting data:", err);
     }
   };
+
+  //käsitellään uuden sanaparin lisääminen
   const handleAdd = async () => {
     try {
+        //axios.post metodilla lisääminen, annetaan uudet arvot paikoilla word1 ja word2
       await axios.post(`${import.meta.env.VITE_API_URL}/api/words`, {
         word1: newWord1,
         word2: newWord2,
       });
+
+      //kutsutaan fetchDataa sivun päivittymiseksi
       fetchData();
+
+      //nollataan uudet sanat ja suljetaan popup ikkuna
       setNewWord1("");
       setNewWord2("");
       handleDialogClose();

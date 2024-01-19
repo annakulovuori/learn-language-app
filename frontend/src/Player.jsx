@@ -6,11 +6,13 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 
 export default function Player() {
+    //käytetään usestatea sanoille, käyttäjän syötteelle, scorelle ja tarkistukselle
   const [words, setWords] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
   const [score, setScore] = useState(null);
   const [isCorrect, setIsCorrect] = useState([]);
 
+  //haetaan data palvelimelta
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -25,29 +27,41 @@ export default function Player() {
     }
   };
 
+  //kutsutaan fetchdataa kun sivu latautuu
   useEffect(() => {
     fetchData();
   }, []);
 
+  //käsitellään vastaukset
+  //index on muutettavan vastauksen indeksi ja answer uusi vastaus
+  //luodaan uusi taulukko, jossa on vanhan taulukon sisältö
+  //asetetaan indeksin mukaan vastaus uuteen taulukkoon
   const handleAnswerChange = (index, answer) => {
     const newAnswers = [...userAnswers];
     newAnswers[index] = answer;
     setUserAnswers(newAnswers);
   };
 
+  //käsittely submit napin painamisen jälkeen
+  //luodaan oikeista vastauksista taulukko
+  //verrataan annettuja vastauksia oikeisiin
+  //luodaan newIsCorrect taulukko jossa käyttäjän vastaus ja tieto oliko se oikein
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(); //estetään sivun päivittyminen 
     const correctAnswers = words.map((wordObj) => wordObj.word2);
     const newIsCorrect = userAnswers.map((answer, index) => ({
       answer,
       isCorrect: answer === correctAnswers[index],
     }));
 
+    //lasketaan kokonaispistemäärä
+    //käytetään reduce funktiota tarkistamaan jokainen vastaus ja lisäämään pisteet
     const totalScore = newIsCorrect.reduce(
       (score, answerObj) => (answerObj.isCorrect ? score + 1 : score),
       0
     );
 
+    //päivitetään score ja isCorrect
     setScore(totalScore);
     setIsCorrect(newIsCorrect);
   };

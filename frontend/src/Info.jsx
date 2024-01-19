@@ -4,10 +4,10 @@ function Info() {
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems: "center", //kaikki keskelle
         justifyContent: "center",
         fontFamily: "Roboto, sans-serif",
-        color: "#292929",
+        color: "#292929", //tumma harmaa tekstin väriksi
       }}
     >
       <p style={{ fontSize: "30px" }}>ADMIN</p>
