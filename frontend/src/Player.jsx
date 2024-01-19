@@ -48,10 +48,10 @@ export default function Player() {
   //luodaan newIsCorrect taulukko jossa käyttäjän vastaus ja tieto oliko se oikein
   const handleSubmit = (event) => {
     event.preventDefault(); //estetään sivun päivittyminen 
-    const correctAnswers = words.map((wordObj) => wordObj.word2);
+    const correctAnswers = words.map((wordObj) => wordObj.word2.toLowerCase());
     const newIsCorrect = userAnswers.map((answer, index) => ({
       answer,
-      isCorrect: answer === correctAnswers[index],
+      isCorrect: answer.toLowerCase() === correctAnswers[index],
     }));
 
     //lasketaan kokonaispistemäärä
