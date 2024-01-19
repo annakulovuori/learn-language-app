@@ -13,6 +13,7 @@ Final assignment of backend course.
 
 # Tech/framework used
 react, node, mysql
+
 docker, material.ui
 
 # Installation
