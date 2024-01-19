@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Typography } from "@mui/material";
+import Button from "@mui/material/Button";
 import axios from "axios";
 
 export default function Player() {
@@ -98,15 +99,31 @@ export default function Player() {
           )}
         </div>
       ))}
-      <button type="submit" style={{ margin: "20px" }}>
+      <Button
+        type="submit"
+        variant="outlined"
+        sx={{
+          borderColor: "#1E1E1E",
+          color: "#1E1E1E",
+          "&:hover": { backgroundColor: "#EFB4FA" },
+        }}
+      >
         SUBMIT
-      </button>
+      </Button>
       {score !== null && (
         <>
           <Typography variant="h6">Total Score: {score}</Typography>
-          <button style={{ margin: "20px" }} onClick={handlePlayAgain}>
+          <Button
+            variant="outlined"
+            onClick={handlePlayAgain}
+            sx={{
+              borderColor: "#1E1E1E",
+              color: "#1E1E1E",
+              "&:hover": { backgroundColor: "#EFB4FA" },
+            }}
+          >
             PLAY AGAIN
-          </button>
+          </Button>
         </>
       )}
     </Box>
