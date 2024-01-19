@@ -17,6 +17,7 @@ function Home() {
           width: "45%",
           justifyContent: "center",
           display: "flex",
+          borderRadius: "15px",
         }}
       >
         <p style={{ fontSize: "40px" }}>READY TO LEARN?</p>
