@@ -7,7 +7,9 @@ Ability to add, edit and delete word pairs.
 Final assignment of backend course.
 
 # Screenshots
-Include logo/demo screenshot etc.
+![Homepage](images/homepage.png)
+![Player view](images/playerview.png)
+![Admin view](images/adminview.png)
 
 # Tech/framework used
 Language: javascript, react, html, node
