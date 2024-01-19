@@ -108,11 +108,12 @@ export default function Admin() {
       <div
         style={{
           display: "flex",
-          marginBottom: "20px",
+          margin: "25px",
           fontFamily: "Roboto, sans-serif",
+          color: "gray",
         }}
       >
-        <p>Add a new word pair</p>
+        <p>ADD A NEW WORD PAIR</p>
         <IconButton onClick={handleDialogOpen}>
           <AddCircleOutlineIcon />
         </IconButton>
