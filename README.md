@@ -12,8 +12,8 @@ Final assignment of backend course.
 ![Admin view](images/adminview.png)
 
 # Tech/framework used
-Language: javascript, react, html, node
-External modules used: Flask, Gunicorn, bcrypt, firebase-admin
+react, node, mysql
+docker, material.ui
 
 # Installation
 1. Clone the repository from Github onto your local machine.
